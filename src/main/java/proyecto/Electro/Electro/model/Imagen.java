@@ -1,20 +1,36 @@
 
 package proyecto.Electro.Electro.model;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "Imagenes")
 public class Imagen {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nombreimagen;
-    private String imagen;
-
+    private String foto;
+    
+     @ManyToOne(cascade = CascadeType.ALL, optional = true)
+    private Producto producto;
     public Imagen() {
     }
 
-    public Imagen(Integer id, String nombre, String imagen) {
+    public Imagen(Integer id, String nombreimagen, String foto, Producto producto) {
         this.id = id;
         this.nombreimagen = nombreimagen;
-        this.imagen = imagen;
+        this.foto = foto;
+        this.producto = producto;
     }
 
+       
     public Integer getId() {
         return id;
     }
@@ -31,17 +47,35 @@ public class Imagen {
         this.nombreimagen = nombreimagen;
     }
 
-    public String getImagen() {
-        return imagen;
+
+    public String getNombreimagen() {
+        return nombreimagen;
     }
 
-    public void setImagen(String imagen) {
-        this.imagen = imagen;
+    public void setNombreimagen(String nombreimagen) {
+        this.nombreimagen = nombreimagen;
     }
 
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
+    }
+
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
+    }
+    
+    
     @Override
     public String toString() {
-        return "Imagen{" + "id=" + id + ", nombre=" + nombreimagen + ", imagen=" + imagen + '}';
+        return "Imagen{" + "id=" + id + ", nombre=" + nombreimagen + ", imagen=" + foto + '}';
     }
     
     

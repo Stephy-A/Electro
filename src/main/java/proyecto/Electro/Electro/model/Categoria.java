@@ -1,14 +1,26 @@
-
 package proyecto.Electro.Electro.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "Categorias")
 public class Categoria {
-     private Integer id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     private String nombrecategoria;
+
 
     public Categoria() {
     }
 
-    public Categoria(Integer id, String nombrecategoria) {
+    public Categoria(Integer id, String nombrecategoria, Producto producto) {
         this.id = id;
         this.nombrecategoria = nombrecategoria;
     }
@@ -29,10 +41,10 @@ public class Categoria {
         this.nombrecategoria = nombrecategoria;
     }
 
+
     @Override
     public String toString() {
         return "Categoria{" + "id=" + id + ", nombrecategoria=" + nombrecategoria + '}';
     }
-    
-    
+
 }

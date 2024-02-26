@@ -1,10 +1,21 @@
 
+
 package proyecto.Electro.Electro.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
+
+@Entity
+@Table(name = "Usuarios")
 
 public class Usuario {
-    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nombre;
     private String apellido;
@@ -16,9 +27,8 @@ public class Usuario {
     public Usuario() {
     }
 
-    
-    public Usuario(Integer Id, String nombre, String apellido, String username, String correo, String password, String tipo) {
-        this.id = Id;
+    public Usuario(Integer id, String nombre, String apellido, String username, String correo, String password, String tipo, Producto producto) {
+        this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.username = username;

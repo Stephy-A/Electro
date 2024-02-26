@@ -1,16 +1,35 @@
-
 package proyecto.Electro.Electro.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
+@Entity
+@Table(name = "Marcas")
 public class Marca {
-      private Integer id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     private String nombremarca;
+
+
+    public Marca(Integer id, String nombremarca, Producto producto) {
+        this.id = id;
+        this.nombremarca = nombremarca;
+    }
 
     public Marca() {
     }
 
-    public Marca(Integer id, String nombre) {
-        this.id = id;
+    public String getNombremarca() {
+        return nombremarca;
+    }
+
+    public void setNombremarca(String nombremarca) {
         this.nombremarca = nombremarca;
     }
 
@@ -34,5 +53,5 @@ public class Marca {
     public String toString() {
         return "Marca{" + "id=" + id + ", nombre=" + nombremarca + '}';
     }
-    
+
 }
