@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Bootstrap CSS -->
+        <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+        <link th:href="@{/css/font/bootstrap-icons.scss}" rel="stylesheet">
+        <link th:href="@{/css/font/bootstrap-icons.json}" rel="stylesheet">
+        <link th:href="@{/css/font/bootstrap-icons.css}" rel="stylesheet">
+        <link th:href="@{/css/styles.css}" rel="stylesheet">
+        <title>Electro</title>
+        <!---<link rel="icon" rel="stylesheet" href="img/comillas.png">--->
+    </head>
+
+    <body>
+
+        <!----Navbar-->
+        <div th:include="administrador/template_dash.html::navbar">
+
+        </div>
+
+        <!---Sidebar-->
+        <div th:include="administrador/template_dash.html::sidebar">
+
+        </div>
+
+
+        <!---Contenido-->
+        <main class="container">
+            <h3 class="mb-3">Usuarios</h3>
+
+            <!-----Formulario-->
+            <form th:action="@{/usuarios/update}" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="id" th:value="${usuario.id}"> 
+                <div class="row">
+                    <h5 class="title" id="registromodal">Modificar Usuario</h5>
+                    <div class="col-xl-5 has-validation mt-3">
+                        <label for="nom-user" class="form-label"><span>*</span> Nombre</label>
+                        <input for="nom-user" type="text" class="form-control" name="nombre" autocomplete="off" th:value="${usuario.nombre}"
+                               required>
+                    </div>
+                    <div class="col-xl-5 has-validation mt-3">
+                        <label for="apell-user" class="form-label"><span>*</span> Apellido</label>
+                        <input for="apell-user" type="text" class="form-control" name="apellido"  autocomplete="off" th:value="${usuario.apellido}"
+                               required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-5 has-validation mt-3">
+                        <label for="apell-user" class="form-label"><span>*</span> Nombre de Usuario</label>
+                        <input for="apell-user" type="text" class="form-control" name="username" autocomplete="off" th:value="${usuario.username}"
+                               required>
+                    </div>
+                    <div class="col-xl-5 has-validation mt-3">
+                        <label for="email-user" class="form-label"><span>*</span> Correo</label>
+                        <input for="email-user" type="email" class="form-control" name="correo" autocomplete="off" th:value="${usuario.correo}"
+                               required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-5 has-validation mt-3">
+                        <label for="num-emple" class="form-label"><span></span>Contraseña</label>
+                        <input for="num-emple" type="password" class="form-control" autocomplete="off" th:value="${usuario.password}"
+                              name="password" required>
+                    </div>
+                    <div class="col-xl-5 has-validation mt-3">
+                        <label for="num-emple" class="form-label"><span></span>Confirmar contraseña</label>
+                        <input for="num-emple" type="password" class="form-control" name="password"
+                               required>
+                    </div>
+                </div>
+
+                <div class="mt-3">
+                    <a th:href="@{/usuarios}" class="btn btn-secondary ">Cerrar</a>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+            </form>
+
+
+        </main>
+        <!-- Optional JavaScript; choose one of the two! -->
+
+        <!-- Option 1: Bootstrap Bundle with Popper -->
+        <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+
+        <!-- Option 2: Separate Popper and Bootstrap JS -->
+    </body>
+
+
+</html>

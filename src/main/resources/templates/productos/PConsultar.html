@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Bootstrap CSS -->
+        <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+        <link th:href="@{/css/font/bootstrap-icons.scss}" rel="stylesheet">
+        <link th:href="@{/css/font/bootstrap-icons.json}" rel="stylesheet">
+        <link th:href="@{/css/font/bootstrap-icons.css}" rel="stylesheet">
+        <link th:href="@{/css/styles.css}" rel="stylesheet">
+        <title>Electro</title>
+        <!---<link rel="icon" rel="stylesheet" href="img/comillas.png">--->
+    </head>
+
+    <body>
+        <!----Navbar-->
+        <div th:include="administrador/template_dash.html::navbar">
+
+        </div>
+
+        <!---Sidebar-->
+        <div th:include="administrador/template_dash.html::sidebar">
+
+        </div>
+        <!---Contenido-->
+        <main class="container">
+            <h3 class="mb-3">Productos</h3>
+
+
+            <!-----Formulario-->
+            <form action="">
+                <input type="hidden" name="id" th:value="${producto.id}"> 
+                <div class="row">
+                    <h5 class="title" id="registromodal">Consultar Producto</h5> 
+                    <div class="col-xl-5 has-validation mt-3">
+                        <label for="nom-user" class="form-label"><span>*</span> Categoria</label>
+                        <input for="nom-user" type="text" class="form-control" autocomplete="off" th:value="${producto.categoria.nombrecategoria}"disabled>
+                    </div>
+                    <div class="col-xl-5 has-validation mt-3">
+                        <label for="nom-user" class="form-label"><span>*</span> Marca</label>
+                        <input for="nom-user" type="text" class="form-control" autocomplete="off" th:value="${producto.marca.nombremarca}" disabled>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-5 has-validation mt-3">
+                        <label for="nom-user" class="form-label"><span>*</span> Nombre</label>
+                        <input for="nom-user" type="text" class="form-control" autocomplete="off" th:value="${producto.nombreproducto}" disabled>
+                    </div>
+                    <div class="col-xl-5 has-validation mt-3">
+                        <label for="nom-user" class="form-label"><span>*</span> Detalles</label>
+                        <input for="nom-user" type="text" class="form-control" autocomplete="off" th:value="${producto.detalle}" disabled></input>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-5 has-validation mt-3">
+                        <label for="nom-user" class="form-label"><span>*</span> Imagen1 </label>
+                        <input for="nom-user" type="file" class="form-control" name="img" disabled>
+                    </div>
+                    <div class="col-xl-5 has-validation mt-3">
+                        <label for="nom-user" class="form-label"><span>*</span> Caracteristicas</label>
+                        <input for="nom-user" type="text" class="form-control" autocomplete="off" th:value="${producto.caracteristica}" disabled></input>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-xl-5 has-validation mt-3">
+                            <label for="apell-user" class="form-label"><span>*</span>Precio</label>
+                            <input for="apell-user" type="number" class="form-control" autocomplete="off" th:value="${producto.precio}" disabled>
+                        </div>
+                        <div class="col-xl-5 has-validation mt-3">
+                            <label for="nom-user" class="form-label"><span>*</span> Componentes</label>
+                            <input for="nom-user" type="text" class="form-control" autocomplete="off" th:value="${producto.componente}" disabled></input>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-5 has-validation mt-3">
+                            <label for="date-user" class="form-label"><span>*</span> Fecha</label>
+                            <input for="date-user" type="date" class="form-control" autocomplete="off" th:value="${producto.fecha}" disabled>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+
+
+                    </div>
+
+                </div>
+                <div class="m-3">
+                    <a th:href="@{/productos}" class="btn btn-secondary ">Cerrar</a>
+            </form>
+
+
+
+
+        </main>
+        <!-- Optional JavaScript; choose one of the two! -->
+
+        <!-- Option 1: Bootstrap Bundle with Popper -->
+        <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+
+        <!-- Option 2: Separate Popper and Bootstrap JS -->
+    </body>
+
+
+</html>

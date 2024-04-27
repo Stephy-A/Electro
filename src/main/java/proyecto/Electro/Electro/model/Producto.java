@@ -6,9 +6,11 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 @Entity
@@ -19,40 +21,40 @@ public class Producto {
      private Integer id;
     private String nombreproducto;
     private double precio;
-    private Date fechalanzamiento;
+    LocalDate fecha = LocalDate.now();
     private String caracteristica;
+    private String imagen;
     private String componente;
     private String detalle;
     
-   @ManyToOne (cascade = CascadeType.ALL, optional = true)
-    private Usuario usuario;
-    @ManyToOne (cascade = CascadeType.ALL, optional = true)
+  /* @ManyToOne 
+   @JoinColumn(name = "idUsuario")
+    private Usuario usuario;*/
+    @ManyToOne 
+    @JoinColumn(name = "idMarca")
     private Marca marca;
 
-    @ManyToOne(cascade = CascadeType.ALL, optional = true)
-    private Categoria categoria;;
+    @ManyToOne 
+    @JoinColumn(name = "idCategoria")
+    private Categoria categoria;
    
 
     public Producto() {
     }
 
-    public Producto(Integer id, String nombreproducto, double precio, Date fechalanzamiento, String caracteristica, String componente, String detalle, Usuario usuario, Marca marca, Categoria categoria) {
+    public Producto(Integer id, String nombreproducto, double precio, String caracteristica, String imagen, String componente, String detalle, Marca marca, Categoria categoria) {
         this.id = id;
         this.nombreproducto = nombreproducto;
         this.precio = precio;
-        this.fechalanzamiento = fechalanzamiento;
         this.caracteristica = caracteristica;
+        this.imagen = imagen;
         this.componente = componente;
         this.detalle = detalle;
-        this.usuario = usuario;
         this.marca = marca;
         this.categoria = categoria;
     }
 
     
-
-   
-
 
     public Integer getId() {
         return id;
@@ -62,11 +64,11 @@ public class Producto {
         this.id = id;
     }
 
-    public String getNombre() {
+    public String getNombreproducto() {
         return nombreproducto;
     }
 
-    public void setNombre(String nombre) {
+    public void setNombreproducto(String nombreproducto) {
         this.nombreproducto = nombreproducto;
     }
 
@@ -78,12 +80,12 @@ public class Producto {
         this.precio = precio;
     }
 
-    public Date getFechalanzamiento() {
-        return fechalanzamiento;
+    public LocalDate getFecha() {
+        return fecha;
     }
 
-    public void setFechalanzamiento(Date fechalanzamiento) {
-        this.fechalanzamiento = fechalanzamiento;
+    public void setFecha(LocalDate fecha) {
+        this.fecha = fecha;
     }
 
     public String getCaracteristica() {
@@ -110,22 +112,6 @@ public class Producto {
         this.detalle = detalle;
     }
 
-    public String getNombreproducto() {
-        return nombreproducto;
-    }
-
-    public void setNombreproducto(String nombreproducto) {
-        this.nombreproducto = nombreproducto;
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
-
     public Marca getMarca() {
         return marca;
     }
@@ -142,11 +128,18 @@ public class Producto {
         this.categoria = categoria;
     }
 
-    
-    @Override
-    public String toString() {
-        return "Producto{" + "id=" + id + ", nombre=" + nombreproducto + ", precio=" + precio + ", fechalanzamiento=" + fechalanzamiento + ", caracteristica=" + caracteristica + ", componente=" + componente + ", detalle=" + detalle + '}';
+    public String getImagen() {
+        return imagen;
     }
 
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
     
+
+    @Override
+    public String toString() {
+        return "Producto{" + "id=" + id + ", nombreproducto=" + nombreproducto + ", precio=" + precio + ", fecha=" + fecha + ", caracteristica=" + caracteristica + ", componente=" + componente + ", detalle=" + detalle + ", marca=" + marca + ", categoria=" + categoria + '}';
+    }
+
 }

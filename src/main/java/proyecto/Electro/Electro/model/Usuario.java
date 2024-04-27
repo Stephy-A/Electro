@@ -27,7 +27,7 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(Integer id, String nombre, String apellido, String username, String correo, String password, String tipo, Producto producto) {
+    public Usuario(Integer id, String nombre, String apellido, String username, String correo, String password, String tipo) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -37,13 +37,12 @@ public class Usuario {
         this.tipo = tipo;
     }
 
-    
     public Integer getId() {
         return id;
     }
 
-    public void setId(Integer Id) {
-        this.id = Id;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getNombre() {
@@ -98,6 +97,7 @@ public class Usuario {
     public String toString() {
         return "Usuario{" + "id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", username=" + username + ", correo=" + correo + ", password=" + password + ", tipo=" + tipo + '}';
     }
+
     
     
 }
